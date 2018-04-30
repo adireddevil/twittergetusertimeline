@@ -1,0 +1,56 @@
+{
+  "name": "Twitter Get Followers",
+  "version": "0.0.1",
+  "type": "flogo:activity",
+  "ref": "github.com/adireddevil/twitterpost",
+  "description": "activity description",
+  "author": "AllStars",
+  "inputs":[
+    {
+		"name": "consumerKey",
+		"type": "string",
+    "required": true
+	},
+	{
+		"name": "consumerSecret",
+		"type": "string",
+      "required": true
+
+	},
+	{
+		"name": "accessToken",
+		"type": "string",
+      "required": true
+
+	},
+	{
+		"name": "accessTokenSecret",
+		"type": "boolean",
+      "required": true
+
+	},
+	{
+		"name": "sinceId",
+		"type": "int",
+    "required": false
+
+	},
+    {
+      "name": "pageCount",
+      "type": "int",
+      "required": false
+
+    }
+
+  ],
+  "outputs": [
+    {
+      "name": "statusCode",
+      "type": "string"
+    },
+    {
+      "name": "message",
+      "type": "any"
+    }
+  ]
+}
