@@ -1,5 +1,5 @@
 {
-  "name": "Twitter Get Followers",
+  "name": "Twitter Get User Timeline",
   "version": "0.0.1",
   "type": "flogo:activity",
   "ref": "github.com/adireddevil/twitterpost",

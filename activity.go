@@ -1,4 +1,4 @@
-package getfollowers
+package getusertimeline
 
 import (
 	s "strings"
