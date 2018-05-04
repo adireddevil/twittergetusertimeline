@@ -1,8 +1,9 @@
-package getusertimeline
+package twittergetusertimeline
 
 import (
 	s "strings"
-	"github.com/DipeshTest/allstarsshared/Twitter"
+
+	"github.com/JayDShah/TwitterAPI"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
@@ -12,7 +13,7 @@ type MyActivity struct {
 	metadata *activity.Metadata
 }
 
-var log = logger.GetLogger("activity-gdrivecreate")
+var log = logger.GetLogger("activity-twittergetusertimeline")
 
 // NewActivity creates a new activity
 func NewActivity(metadata *activity.Metadata) activity.Activity {
@@ -46,7 +47,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 		context.SetOutput("statusCode", "102")
 
-		context.SetOutput("message", "Consumer Key field is blank")
+		context.SetOutput("message", "Consumer Secret field is blank")
 
 	} else if len(accessToken) == 0 {
 
@@ -60,24 +61,8 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 
 		context.SetOutput("message", "Access Token Secret field is blank")
 
-	} else if (sinceId) > 0 {
-
-		context.SetOutput("statusCode", "105")
-
-		context.SetOutput("message", "sinceId field is blank")
-
-	} else if (pageCount) > 0 {
-
-		context.SetOutput("statusCode", "106")
-
-		context.SetOutput("message", "Page Count is blank")
-
 	} else {
-
-
-		//code, msg := GDrive.CreateFile(accessToken, fileFullPath, emailAddr, role, sendNotification, timeout)
-
-		code, msg := twitter.GetUserTimeline(consumerKey, consumerSecret, accessToken, accessTokenSecret, sinceId,pageCount)
+		code, msg := Twitter.GetUserTimeline(consumerKey, consumerSecret, accessToken, accessTokenSecret, sinceId, pageCount)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)

@@ -1,4 +1,4 @@
-package getusertimeline
+package twittergetusertimeline
 
 import (
 	"io/ioutil"
