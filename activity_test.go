@@ -36,8 +36,8 @@ func TestCreate(t *testing.T) {
 		return
 	}
 }
-
-func TestGDriveCreateFile_InvalidUser(t *testing.T) {
+/*
+func TestTwitterGetUserTimeline_Success(t *testing.T) {
 
 	defer func() {
 		if r := recover(); r != nil {
@@ -51,10 +51,10 @@ func TestGDriveCreateFile_InvalidUser(t *testing.T) {
 
 	//setup attrs
 
-	tc.SetInput("consumerKey", "NPsc5Cz49sLMkUEwM4gclc6bc")
-	tc.SetInput("consumerSecret", "0OelZ71gGz3CA9vuA5HJwX2tO27XHZkUIZV5scZbM0lK1btjqr")
-	tc.SetInput("accessToken", "990616654353645569-M5rp4NsPuWavBKcT25BOZG4c5sTwf7a")
-	tc.SetInput("accessTokenSecret", "VfmVsLP3ZVp7kQyUU9bC1Vf4FABNT8sQ2MmQYWAHljKZ8")
+	tc.SetInput("consumerKey", "6f2ogTcNPK0Mf6OO6DSL0GxNB")
+	tc.SetInput("consumerSecret", "Hb8gDvSnfIkLuO6L6NQWakf8w2OHBnfrH1z4Cjh8IrCsGa4BDM")
+	tc.SetInput("accessToken", "1026895242-VTblWlyH3J24lsQbJcO7KBxkbd7ByGyUXIkAFTk")
+	tc.SetInput("accessTokenSecret", "h41iwGi3oHwgP01tmVYwY1ceaqaly7RA14zY6oEqigD8b")
 	tc.SetInput("sinceId", 10)
 	tc.SetInput("pageCount", 10)
 
@@ -67,9 +67,37 @@ func TestGDriveCreateFile_InvalidUser(t *testing.T) {
 	fmt.Print(msg)
 	assert.Equal(t, code, "200")
 
+}
+*/
 
+func TestTwitterGetUserTimeline_InvalidToken(t *testing.T) {
 
+	defer func() {
+		if r := recover(); r != nil {
+			t.Failed()
+			t.Errorf("panic during execution: %v", r)
+		}
+	}()
 
+	act := NewActivity(getActivityMetadata())
+	tc := test.NewTestActivityContext(getActivityMetadata())
 
+	//setup attrs
+
+	tc.SetInput("consumerKey", "6f2ogTcNPK0Mf6OO6DSL0GxN")
+	tc.SetInput("consumerSecret", "Hb8gDvSnfIkLuO6L6NQWakf8w2OHBnfrH1z4Cjh8IrCsGa4BDM")
+	tc.SetInput("accessToken", "1026895242-VTblWlyH3J24lsQbJcO7KBxkbd7ByGyUXIkAFTk")
+	tc.SetInput("accessTokenSecret", "h41iwGi3oHwgP01tmVYwY1ceaqaly7RA14zY6oEqigD8b")
+	tc.SetInput("sinceId", 10)
+	tc.SetInput("pageCount", 10)
+
+	act.Eval(tc)
+
+	//check result attr
+
+	code := tc.GetOutput("statusCode")
+	msg := tc.GetOutput("message")
+	fmt.Print(msg)
+	assert.Equal(t, code, "401")
 
 }
