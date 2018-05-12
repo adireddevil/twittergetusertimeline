@@ -36,7 +36,7 @@ func TestCreate(t *testing.T) {
 		return
 	}
 }
-/*
+
 func TestTwitterGetUserTimeline_Success(t *testing.T) {
 
 	defer func() {
@@ -68,8 +68,8 @@ func TestTwitterGetUserTimeline_Success(t *testing.T) {
 	assert.Equal(t, code, "200")
 
 }
-*/
 
+/*
 func TestTwitterGetUserTimeline_InvalidToken(t *testing.T) {
 
 	defer func() {
@@ -100,4 +100,4 @@ func TestTwitterGetUserTimeline_InvalidToken(t *testing.T) {
 	fmt.Print(msg)
 	assert.Equal(t, code, "401")
 
-}
+}*/

@@ -3,7 +3,7 @@ package twittergetusertimeline
 import (
 	s "strings"
 
-	"github.com/JayDShah/TwitterAPI"
+	"github.com/DipeshTest/allstarsshared/twitter"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
@@ -62,7 +62,7 @@ func (a *MyActivity) Eval(context activity.Context) (done bool, err error) {
 		context.SetOutput("message", "Access Token Secret field is blank")
 
 	} else {
-		code, msg := Twitter.GetUserTimeline(consumerKey, consumerSecret, accessToken, accessTokenSecret, sinceId, pageCount)
+		code, msg := twitter.GetUserTimeline(consumerKey, consumerSecret, accessToken, accessTokenSecret, sinceId, pageCount)
 		context.SetOutput("statusCode", code)
 
 		context.SetOutput("message", msg)
